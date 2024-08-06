@@ -27,6 +27,12 @@ const App = () => {
     }
   };
 
+  const handleRemoveFighter = (index) => {
+    const fighter = team[index];
+    setTeam(team.filter((_, i) => i !== index));
+    setMoney(money + fighter.price);
+  };
+
   useEffect(() => {
     setTotalStrength(team.reduce((sum, fighter) => sum + fighter.strength, 0));
     setTotalAgility(team.reduce((sum, fighter) => sum + fighter.agility, 0));
@@ -60,6 +66,7 @@ const App = () => {
               <p>Price: ${fighter.price}</p>
               <p>Strength: {fighter.strength}</p>
               <p>Agility: {fighter.agility}</p>
+              <button onClick={() => handleRemoveFighter(index)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -67,6 +74,9 @@ const App = () => {
       <h2>Total Team Strength: {totalStrength}</h2>
       <h2>Total Team Agility: {totalAgility}</h2>
     </div>
+  );
+};
+
   );
 };
 
