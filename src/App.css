@@ -1,10 +1,53 @@
-/* src/App.css */
-ul {
-  display: flex;
-  flex-wrap: wrap;
+.app-container {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
 }
 
-li {
+.status {
+  margin-bottom: 20px;
+}
+
+.team-section, .fighters-section {
+  margin-top: 20px;
+}
+
+.team-list, .fighters-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
+  padding: 0;
+}
+
+.team-member, .fighter {
+  border: 1px solid #444;
+  border-radius: 5px;
   margin: 10px;
+  padding: 10px;
+  width: 150px;
+  background-color: #333;
+  text-align: center;
+}
+
+.team-member img, .fighter img {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
 }
