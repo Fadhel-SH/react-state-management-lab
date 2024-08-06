@@ -17,6 +17,21 @@ const App = () => {
     { name: 'Leader', price: 22, strength: 7, agility: 6, img: 'https://via.placeholder.com/150/602b9e' },
   ]);
 
+  
+  const handleAddFighter = (fighter) => {
+    if (money >= fighter.price) {
+      setTeam([...team, fighter]);
+      setMoney(money - fighter.price);
+    } else {
+      console.log("Not enough money");
+    }
+  };
+
+  useEffect(() => {
+    setTotalStrength(team.reduce((sum, fighter) => sum + fighter.strength, 0));
+    setTotalAgility(team.reduce((sum, fighter) => sum + fighter.agility, 0));
+  }, [team]);
+
   return (
     <div>
       <h1>Hello world!</h1>
@@ -29,10 +44,28 @@ const App = () => {
             <p>Price: ${fighter.price}</p>
             <p>Strength: {fighter.strength}</p>
             <p>Agility: {fighter.agility}</p>
-            <button>Add</button>
+            <button onClick={() => handleAddFighter(fighter)}>Add</button>
           </li>
         ))}
       </ul>
+      <h2>Team</h2>
+      {team.length === 0 ? (
+        <p>Pick some team members!</p>
+      ) : (
+        <ul>
+          {team.map((fighter, index) => (
+            <li key={index}>
+              <img src={fighter.img} alt={fighter.name} />
+              <h3>{fighter.name}</h3>
+              <p>Price: ${fighter.price}</p>
+              <p>Strength: {fighter.strength}</p>
+              <p>Agility: {fighter.agility}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <h2>Total Team Strength: {totalStrength}</h2>
+      <h2>Total Team Agility: {totalAgility}</h2>
     </div>
   );
 };
